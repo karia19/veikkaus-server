@@ -9,15 +9,11 @@ RUN apt-get update -y \
 #RUN chmod 0644 /etc/cron.d/update_ods.cron \
 #  && crontab /etc/cron.d/update_ods.cron
 COPY crontab /etc/cron.d/crontab
-
 RUN chmod 0644 /etc/cron.d/crontab
-#RUN chmod u+x test_cron.py
-#RUN chmod u+x update_redis.py
-
 RUN /usr/bin/crontab /etc/cron.d/crontab
 
-#CMD ["cron", "-f"]
-CMD ["service", "cron", "start"]
+CMD ["cron", "-f"]
+#CMD ["service", "cron", "start"]
 
 WORKDIR /app
 
